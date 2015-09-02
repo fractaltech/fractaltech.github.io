@@ -25,8 +25,8 @@ function canvasApp(canvas) {
     and allow the radius of them to vary. If so, modify the next three variables.
     */
     numCircles = 2;
-    maxMaxRad = 50;
-    minMaxRad = 100;
+    maxMaxRad = 75;
+    minMaxRad = 150;
     
     /*
     We draw closed curves with varying radius. The factor below should be set between 0 and 1,
@@ -77,9 +77,9 @@ function canvasApp(canvas) {
       
       //define gradient
       grad = context.createRadialGradient(0,0,minR,0,0,maxR);
-      grad.addColorStop(1, 'rgba(0,170,200,0.2)');
+      grad.addColorStop(1, 'rgba(0,170,200,0.3)');
+      grad.addColorStop(0, 'rgba(128,12,12, 0.3)')
       //grad.addColorStop(0,"rgba(0,20,170,0.2)");
-      grad.addColorStop(0, 'rgba(128,12,12, 0.5)')
       
       var newCircle = {
         centerX: -maxR,
