@@ -1,0 +1,64 @@
+.top-panel {
+  background-color: #ddd;
+}
+/*.panel-1{
+    background-image: url(../img/back-1.png);
+    background-size: 200px 400px;
+}*/
+.panel-1 {
+  position: relative;
+}
+.panel-1 h4 {
+  margin-top: 300px;
+  text-align: center;
+  color: #fff;
+}
+.panel-1 h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 200px;
+}
+.panel-2 {
+  position: relative;
+  background-color: #fff;
+}
+.panel-2 h1 {
+  text-align: center;
+  padding: 100px;
+}
+.panel-2 h2 {
+  text-align: center;
+  padding: 20px;
+}
+.panel-2 p {
+  text-align: center;
+  margin-bottom: 100px;
+}
+.panel-2 .p2-logo {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.panel-3 {
+  position: relative;
+}
+.panel-3 h1 {
+  padding: 20px;
+  margin-top: 350px;
+  text-align: center;
+  color: #fff;
+  border: 7px solid #fff;
+}
+.bottom-panel {
+  position: relative;
+  bachgroud-color: #000;
+}
+.bottom-panel h1,
+.bottom-panel h5 {
+  text-align: center;
+}
+.back-1 {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
