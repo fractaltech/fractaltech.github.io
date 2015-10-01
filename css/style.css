@@ -1,5 +1,11 @@
 .top-panel {
-  background-color: #ddd;
+  background-color: #ebf0fa;
+}
+.top-panel h1 {
+  margin-bottom: 10px;
+}
+.top-panel img {
+  width: 90;
 }
 /*.panel-1{
     background-image: url(../img/back-1.png);
@@ -8,19 +14,22 @@
 .panel-1 {
   position: relative;
 }
-.panel-1 h4 {
-  margin-top: 300px;
-  text-align: center;
-  color: #fff;
-}
 .panel-1 h1 {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 200px;
+  margin-top: 350px;
+  text-align: left;
+  color: #ebf0fa;
+  padding: 20px;
+  margin-bottom: 60px;
+}
+.panel-1 h2 {
+  text-align: left;
+  color: #ebf0fa;
+  padding: 10px;
+  margin-left: 10px;
 }
 .panel-2 {
   position: relative;
-  background-color: #fff;
+  background-color: #ebf0fa;
 }
 .panel-2 h1 {
   text-align: center;
@@ -44,20 +53,25 @@
 }
 .panel-3 h1 {
   padding: 20px;
-  margin-top: 350px;
+  margin-top: 380px;
   text-align: center;
   color: #fff;
-  border: 7px solid #fff;
+  border: 7px solid #008cba;
 }
 .bottom-panel {
   position: relative;
-  bachgroud-color: #000;
+  background-color: #00334c;
 }
 .bottom-panel h1,
 .bottom-panel h5 {
   text-align: center;
+  color: #ebf0fa;
 }
-.back-1 {
+.bottom-panel h5 {
+  padding: 25px;
+  color: #ebf0fa;
+}
+.back {
   position: absolute;
   width: 100%;
   z-index: -1;
