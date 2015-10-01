@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', function (ev) {
+    $(window).on("resize", imgHeightFix);
     imgHeightFix();
     contactus();
 });
 
 
 function imgHeightFix(){
-    var imgHeight1 = $('.back-1').height();
-    $('.img-height-1').height(imgHeight1);
-    var imgHeight2 = $('.back-2').height();
-    $('.img-height-2').height(imgHeight2);   
+//    $('.back-1, .back-2').imagesLoaded(function(){
+        $('.back-1, .back-2').on("load", function(){
+        var imgHeight1 = $('.back-1').height();
+        $('.img-height-1').height(imgHeight1);
+        var imgHeight2 = $('.back-2').height();
+        $('.img-height-2').height(imgHeight2);       
+    });
 }
 
 function contactus(){
-    $('.contact-us').on("click", function(ev){
+    $('.contact-us').on("click", function (ev){
         ev.preventDefault();
         window.location.href = "mailto:"+mailStrToEmail('contact-at-fractaltech-dot-in');
     });
