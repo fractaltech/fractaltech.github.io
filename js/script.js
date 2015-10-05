@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function (ev) {
-    $(window).on("resize", imgHeightFix);
-    imgHeightFix();
+ //   $(window).on("resize", imgHeightFix);
+ //   imgHeightFix();
     contactus();
 });
 
 
 function imgHeightFix(){
 //    $('.back-1, .back-2').imagesLoaded(function()
+       /*
         function fixer() {
             $(this).parent().height($(this).height());
         }
@@ -18,14 +19,14 @@ function imgHeightFix(){
                 $(el).on('load', fixer);
             }
         });
-        /*
+        */
         $('.back-1, .back-2').on("load", function(){
         var imgHeight1 = $('.back-1').height();
         $('.img-height-1').height(imgHeight1);
         var imgHeight2 = $('.back-2').height();
         $('.img-height-2').height(imgHeight2);
-        */       
-    //});
+               
+    });
 }
 
 function contactus(){
