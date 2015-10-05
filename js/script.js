@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (ev) {
- //   $(window).on("resize", imgHeightFix);
- //   imgHeightFix();
+    $(window).on("resize", imgHeightFix);
+    imgHeightFix();
     contactus();
 });
 
