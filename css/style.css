@@ -103,8 +103,6 @@
   padding: 20px;
   margin-top: 380px;
   text-align: center;
-  color: #fff;
-  border: 7px solid #008cba;
 }
 @media screen and (max-width: 990px) {
   .panel-3 {
@@ -119,8 +117,6 @@
     padding: 4px;
     margin-top: 280px;
     text-align: center;
-    color: #fff;
-    border: 4px solid #008cba;
   }
 }
 .bottom-panel {
@@ -151,4 +147,9 @@ textarea {
 .modal-header,
 .modal-body {
   background-color: #ebf0fa;
+}
+#get-in-touch {
+  background-color: #0a0b0f;
+  color: #008cba;
+  border: 4px solid #008cba;
 }
