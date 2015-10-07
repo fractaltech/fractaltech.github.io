@@ -7,7 +7,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/script.js"></script>
-  <script>src="js/imagesloaded.pkgd.min.js"</script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="container-fluid">
@@ -17,7 +19,9 @@
       </div>
       <div class="col-md-2 col-md-offset-6 col-xs-6 col-xs-offset-2">
         <h3>
-          <a href="#" class="contact-us">&lt;&lt; Connect &gt;&gt;</a>
+          <button type="button" class="btn btn-primary btn-lg conatct-us" data-toggle="modal" data-target="#myModal">
+            Contact us
+          </button>
         </h3>
       </div>
     </div>
@@ -74,5 +78,37 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Please fill the below</h3>
+        </div>
+        <div class="modal-body">
+          <form id="contact" action="index.html">
+            <input type="text" id="nameInput" placeholder="Name" required><br>
+            <input type="email" id="emailInput" placeholder="Email" required><br>
+            <textarea type="text" id="msgInput" placeholder="Message" min="10" rows="5" required></textarea><br>
+            <input type="submit" class="btn btn-primary" id="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var myDataRef = new Firebase('https://yanevx3q1qj.firebaseio-demo.com/');
+    $('#contact').on("submit", function () {
+      console.log("first");
+      var name = $('#nameInput').val();
+          var email = $('#emailInput').val();
+          var msg = $('#msgInput').val();
+          console.log("abc");
+          myDataRef.push({name: name, email: email, text: msg});
+      console.log("done");
+    });
+  </script>
 </body>
 </html>

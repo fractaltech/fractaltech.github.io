@@ -141,3 +141,14 @@
   width: 100%;
   z-index: -1;
 }
+input,
+textarea {
+  padding: 5px;
+  margin-top: 5px;
+  background-color: #ebf0fa;
+  border: 2px ridge #b8b8b8;
+}
+.modal-header,
+.modal-body {
+  background-color: #ebf0fa;
+}

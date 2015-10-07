@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function (ev) {
     $(window).on("resize", imgHeightFix);
     imgHeightFix();
-    contactus();
+//    contactus();
 });
 
 
@@ -32,7 +32,8 @@ function imgHeightFix(){
 function contactus(){
     $('.contact-us').on("click", function (ev){
         ev.preventDefault();
-        window.location.href = "mailto:"+mailStrToEmail('contact-at-fractaltech-dot-in');
+        //window.location.href = "mailto:"+mailStrToEmail('contact-at-fractaltech-dot-in');
+        window.open("form.html");
     });
 }
 
