@@ -101,7 +101,7 @@
     </div>
   </div>
   <script>
-    var myDataRef = new Firebase('https://yanevx3q1qj.firebaseio-demo.com/');
+    var myDataRef = new Firebase('https://amber-torch-2297.firebaseio.com/');
     $('#contact').on("submit", function () {
       console.log("first");
       var name = $('#nameInput').val();
@@ -111,6 +111,11 @@
           myDataRef.push({name: name, email: email, text: msg});
       console.log("done");
     });
+/*    myDataRef.on('child_added',function (snapshot){
+      var message = snapshot.val();
+      displayChatMessage(message.name, message.email, message.msg);
+    });
+*/
   </script>
 </body>
 </html>

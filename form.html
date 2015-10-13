@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fractal Technologies</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/script.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script> 
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<h2>Please fill the below</h2>
+  <form id="contact" action="index.html">
+    <input type="text" id="nameInput" placeholder="Name" style="width: 200px;" required><br>
+    <input type="email" id="emailInput" placeholder="Email" style="width: 200px;" required><br>
+    <input type="text" id="msgInput" placeholder="Message" min="10" style="width: 200px; height:100px;" required><br>
+    <input type="submit" id="submit" value="submit">
+  </form>
+  <script>
+    var myDataRef = new Firebase('https://yanevx3q1qj.firebaseio-demo.com/');
+    $('#contact').on("submit", function () {
+      console.log("first");
+      var name = $('#nameInput').val();
+          var email = $('#emailInput').val();
+          var msg = $('#msgInput').val();
+          console.log("abc");
+          myDataRef.push({name: name, email: email, text: msg});
+      console.log("done");
+    });
+  </script>
+</body>
+</html>
