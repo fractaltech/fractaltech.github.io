@@ -349,7 +349,7 @@ const FractalTech = React.createClass({
 		      </div>
 		    </div>
 		    <div className="row bottomPanel" style={styles.bottomPanel}>
-		      <div className="col-md-2 col-md-offset-1">
+		      <div className="col-md-3">
 		        <h1 style={styles.bottomPanel.h1}>Fractaltech</h1>
 		      </div>
 		      <div className="col-md-6">
