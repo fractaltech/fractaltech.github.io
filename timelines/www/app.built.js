@@ -89,286 +89,6 @@ document.addEventListener('DOMContentLoaded', function (ev) {
 });
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.Container', function () {
-  var _app = app('data.store');
-
-  var projects = _app.projects;
-  var project = _app.project;
-
-  var Project = app('dom.Project');
-  var Timeline = app('dom.Timeline');
-
-  var Container = (function (_React$Component) {
-    _inherits(Container, _React$Component);
-
-    function Container(props) {
-      _classCallCheck(this, Container);
-
-      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this, props));
-
-      _this.state = {};
-
-      _this._initTabs();
-      return _this;
-    }
-
-    _createClass(Container, [{
-      key: '_initTabs',
-      value: function _initTabs() {
-        this.state.tabs = [
-          //{slug: 'all', name: 'All Timelines'}
-        ].concat(Array.from(projects).map(function (p) {
-          return { slug: p.slug, name: p.name };
-        }));
-
-        this.state.activeTab = this.state.tabs[0];
-      }
-    }, {
-      key: 'activateTab',
-      value: function activateTab(tab) {
-        this.setState({ activeTab: tab });
-      }
-    }, {
-      key: 'onTabActivated',
-      value: function onTabActivated(tab, ev) {
-        ev.preventDefault();
-        this.activateTab(tab);
-      }
-    }, {
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-
-        return React.createElement(
-          'div',
-          { className: 'container-fluid' },
-          React.createElement(
-            'div',
-            { className: 'row' },
-            React.createElement(
-              'div',
-              { className: 'col-md-12' },
-              React.createElement(
-                'h1',
-                null,
-                'Actions and Timelines'
-              ),
-              React.createElement(
-                'ul',
-                { className: 'nav nav-tabs' },
-                (function () {
-                  return _this2.state.tabs.map(function (tab) {
-                    return React.createElement(
-                      'li',
-                      { className: tab === _this2.state.activeTab ? 'active' : '' },
-                      React.createElement(
-                        'a',
-                        { href: '#', onClick: _this2.onTabActivated.bind(_this2, tab) },
-                        tab.name
-                      )
-                    );
-                  });
-                })()
-              ),
-              (function () {
-                switch (_this2.state.activeTab.slug) {
-                  case 'all':
-                    return React.createElement(Timeline, null);
-                  default:
-                    return React.createElement(Project, { project: project(_this2.state.activeTab.slug) });
-                }
-              })()
-            )
-          )
-        );
-      }
-    }]);
-
-    return Container;
-  })(React.Component);
-
-  return Container;
-});
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.Project', function () {
-
-  var months = app('util.months');
-
-  var Project = (function (_React$Component) {
-    _inherits(Project, _React$Component);
-
-    function Project(props) {
-      _classCallCheck(this, Project);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
-    }
-
-    _createClass(Project, [{
-      key: 'render',
-      value: function render() {
-        var _this2 = this;
-
-        return React.createElement(
-          'div',
-          { className: 'row' },
-          React.createElement(
-            'div',
-            { className: 'col-md-12' },
-            React.createElement(
-              'table',
-              { className: 'table table-bordered' },
-              React.createElement(
-                'thead',
-                null,
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'th',
-                    null,
-                    React.createElement(
-                      'small',
-                      null,
-                      'Resource/Role'
-                    )
-                  ),
-                  (function () {
-                    return months(1, 18).map(function (i) {
-                      return React.createElement(
-                        'th',
-                        null,
-                        React.createElement(
-                          'small',
-                          null,
-                          'Month ',
-                          i
-                        )
-                      );
-                    });
-                  })()
-                )
-              ),
-              React.createElement(
-                'tbody',
-                null,
-                (function () {
-                  return Array.from(_this2.props.project.resources).map(function (resource) {
-                    var responsibilities = resource.responsibilitiesFor(_this2.props.project);
-
-                    return [React.createElement(
-                      'tr',
-                      null,
-                      React.createElement(
-                        'th',
-                        null,
-                        React.createElement(
-                          'small',
-                          null,
-                          resource.name
-                        )
-                      ),
-                      (function () {
-                        return months(1, 18).map(function (m) {
-                          return React.createElement('td', { className: 'bg-warning' });
-                        });
-                      })()
-                    )].concat(responsibilities.map(function (responsibility) {
-                      return React.createElement(
-                        'tr',
-                        null,
-                        React.createElement(
-                          'td',
-                          null,
-                          React.createElement(
-                            'small',
-                            null,
-                            React.createElement(
-                              'small',
-                              null,
-                              responsibility.involvement
-                            )
-                          )
-                        ),
-                        (function () {
-                          return months(1, 18).map(function (m) {
-                            if (responsibility.coversMonth(m)) {
-                              return React.createElement('td', { style: responsibility.bgStyle() });
-                            } else {
-                              return React.createElement('td', null);
-                            }
-                          });
-                        })()
-                      );
-                    }));
-                  });
-                })()
-              )
-            )
-          )
-        );
-      }
-    }]);
-
-    return Project;
-  })(React.Component);
-
-  return Project;
-});
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.Timeline', function () {
-  var Timeline = (function (_React$Component) {
-    _inherits(Timeline, _React$Component);
-
-    function Timeline(props) {
-      _classCallCheck(this, Timeline);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(Timeline).call(this, props));
-    }
-
-    _createClass(Timeline, [{
-      key: 'render',
-      value: function render() {
-        return React.createElement(
-          'h3',
-          null,
-          'All Timelines'
-        );
-      }
-    }]);
-
-    return Timeline;
-  })(React.Component);
-
-  return Timeline;
-});
-'use strict';
-
 app('data.describeProjects', function () {
   var months = app('util.months');
 
@@ -640,6 +360,397 @@ app('data.team', function () {
       });
     }
   };
+});
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+app('dom.Container', function () {
+  var _app = app('data.store');
+
+  var projects = _app.projects;
+  var project = _app.project;
+
+  var Project = app('dom.Project');
+  var Timeline = app('dom.Timeline');
+
+  var Container = (function (_React$Component) {
+    _inherits(Container, _React$Component);
+
+    function Container(props) {
+      _classCallCheck(this, Container);
+
+      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this, props));
+
+      _this.state = {};
+
+      _this._initTabs();
+      return _this;
+    }
+
+    _createClass(Container, [{
+      key: '_initTabs',
+      value: function _initTabs() {
+        this.state.tabs = [{ slug: 'all', name: 'All Timelines' }].concat(Array.from(projects).map(function (p) {
+          return { slug: p.slug, name: p.name };
+        }));
+
+        this.state.activeTab = this.state.tabs[0];
+      }
+    }, {
+      key: 'activateTab',
+      value: function activateTab(tab) {
+        this.setState({ activeTab: tab });
+      }
+    }, {
+      key: 'onTabActivated',
+      value: function onTabActivated(tab, ev) {
+        ev.preventDefault();
+        this.activateTab(tab);
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+
+        return React.createElement(
+          'div',
+          { className: 'container-fluid' },
+          React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(
+              'div',
+              { className: 'col-md-12' },
+              React.createElement(
+                'h1',
+                null,
+                'Actions and Timelines'
+              ),
+              React.createElement(
+                'ul',
+                { className: 'nav nav-tabs' },
+                (function () {
+                  return _this2.state.tabs.map(function (tab) {
+                    return React.createElement(
+                      'li',
+                      { className: tab === _this2.state.activeTab ? 'active' : '' },
+                      React.createElement(
+                        'a',
+                        { href: '#', onClick: _this2.onTabActivated.bind(_this2, tab) },
+                        tab.name
+                      )
+                    );
+                  });
+                })()
+              ),
+              (function () {
+                switch (_this2.state.activeTab.slug) {
+                  case 'all':
+                    return React.createElement(Timeline, null);
+                  default:
+                    return React.createElement(Project, { project: project(_this2.state.activeTab.slug) });
+                }
+              })()
+            )
+          )
+        );
+      }
+    }]);
+
+    return Container;
+  })(React.Component);
+
+  return Container;
+});
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+app('dom.Project', function () {
+
+  var months = app('util.months');
+
+  var Project = (function (_React$Component) {
+    _inherits(Project, _React$Component);
+
+    function Project(props) {
+      _classCallCheck(this, Project);
+
+      return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).call(this, props));
+    }
+
+    _createClass(Project, [{
+      key: 'render',
+      value: function render() {
+        var _this2 = this;
+
+        return React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(
+            'div',
+            { className: 'col-md-12' },
+            React.createElement(
+              'table',
+              { className: 'table table-bordered' },
+              React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                  'tr',
+                  null,
+                  React.createElement(
+                    'th',
+                    null,
+                    React.createElement(
+                      'small',
+                      null,
+                      'Resource/Role'
+                    )
+                  ),
+                  (function () {
+                    return months(1, 18).map(function (i) {
+                      return React.createElement(
+                        'th',
+                        null,
+                        React.createElement(
+                          'small',
+                          null,
+                          'Month ',
+                          i
+                        )
+                      );
+                    });
+                  })()
+                )
+              ),
+              React.createElement(
+                'tbody',
+                null,
+                (function () {
+                  return Array.from(_this2.props.project.resources).map(function (resource) {
+                    var responsibilities = resource.responsibilitiesFor(_this2.props.project);
+
+                    return [React.createElement(
+                      'tr',
+                      null,
+                      React.createElement(
+                        'th',
+                        null,
+                        React.createElement(
+                          'small',
+                          null,
+                          resource.name
+                        )
+                      ),
+                      (function () {
+                        return months(1, 18).map(function (m) {
+                          return React.createElement('td', { className: 'bg-warning' });
+                        });
+                      })()
+                    )].concat(responsibilities.map(function (responsibility) {
+                      return React.createElement(
+                        'tr',
+                        null,
+                        React.createElement(
+                          'td',
+                          null,
+                          React.createElement(
+                            'small',
+                            null,
+                            React.createElement(
+                              'small',
+                              null,
+                              responsibility.involvement
+                            )
+                          )
+                        ),
+                        (function () {
+                          return months(1, 18).map(function (m) {
+                            if (responsibility.coversMonth(m)) {
+                              return React.createElement('td', { style: responsibility.bgStyle() });
+                            } else {
+                              return React.createElement('td', null);
+                            }
+                          });
+                        })()
+                      );
+                    }));
+                  });
+                })()
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Project;
+  })(React.Component);
+
+  return Project;
+});
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+app('dom.Timeline', function () {
+  var _app = app('data.store');
+
+  var projects = _app.projects;
+  var resources = _app.resources;
+
+  var months = app('util.months');
+
+  var Timeline = (function (_React$Component) {
+    _inherits(Timeline, _React$Component);
+
+    function Timeline(props) {
+      _classCallCheck(this, Timeline);
+
+      return _possibleConstructorReturn(this, Object.getPrototypeOf(Timeline).call(this, props));
+    }
+
+    _createClass(Timeline, [{
+      key: 'render',
+      value: function render() {
+        return React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(
+            'div',
+            { className: 'col-md-12' },
+            React.createElement(
+              'table',
+              { className: 'table table-bordered' },
+              React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                  'tr',
+                  null,
+                  React.createElement(
+                    'th',
+                    null,
+                    React.createElement(
+                      'small',
+                      null,
+                      'Resource/Role'
+                    )
+                  ),
+                  (function () {
+                    return months(1, 18).map(function (i) {
+                      return React.createElement(
+                        'th',
+                        null,
+                        React.createElement(
+                          'small',
+                          null,
+                          React.createElement(
+                            'small',
+                            null,
+                            'Month ',
+                            i
+                          )
+                        )
+                      );
+                    });
+                  })()
+                )
+              ),
+              React.createElement(
+                'tbody',
+                null,
+                (function () {
+                  return Array.from(resources).map(function (resource) {
+                    return [React.createElement(
+                      'tr',
+                      null,
+                      React.createElement(
+                        'th',
+                        null,
+                        React.createElement(
+                          'small',
+                          null,
+                          resource.name
+                        )
+                      ),
+                      (function () {
+                        return months(1, 18).map(function (m) {
+                          return React.createElement('td', { className: 'bg-warning' });
+                        });
+                      })()
+                    )].concat(Array.from(resource.projects).map(function (project) {
+                      return resource.responsibilitiesFor(project).map(function (responsibility) {
+                        return React.createElement(
+                          'tr',
+                          null,
+                          React.createElement(
+                            'td',
+                            null,
+                            React.createElement(
+                              'small',
+                              null,
+                              React.createElement(
+                                'small',
+                                null,
+                                React.createElement(
+                                  'strong',
+                                  null,
+                                  project.name
+                                ),
+                                '-',
+                                responsibility.involvement
+                              )
+                            )
+                          ),
+                          (function () {
+                            return months(1, 18).map(function (m) {
+                              if (responsibility.coversMonth(m)) {
+                                return React.createElement('td', { style: responsibility.bgStyle() });
+                              } else {
+                                return React.createElement('td', null);
+                              }
+                            });
+                          })()
+                        );
+                      });
+                    }).reduce(function (nodes, childNodes) {
+                      console.log(childNodes);
+                      return nodes.concat(childNodes);
+                    }, []));
+                  });
+                })()
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Timeline;
+  })(React.Component);
+
+  return Timeline;
 });
 'use strict';
 

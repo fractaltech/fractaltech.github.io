@@ -14,7 +14,7 @@ app('dom.Container', () => {
 
     _initTabs() {
       this.state.tabs = [
-        //{slug: 'all', name: 'All Timelines'}
+        {slug: 'all', name: 'All Timelines'}
       ].concat(Array.from(projects).map(p => { return {slug: p.slug, name: p.name}; }));
 
       this.state.activeTab = this.state.tabs[0];
