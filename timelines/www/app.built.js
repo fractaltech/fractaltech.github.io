@@ -549,7 +549,7 @@ app('dom.Project', function () {
                       null,
                       React.createElement(
                         'th',
-                        null,
+                        { className: 'bg-warning' },
                         React.createElement(
                           'small',
                           null,
@@ -687,7 +687,7 @@ app('dom.Timeline', function () {
                       null,
                       React.createElement(
                         'th',
-                        null,
+                        { className: 'bg-warning' },
                         React.createElement(
                           'small',
                           null,

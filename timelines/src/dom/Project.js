@@ -30,7 +30,7 @@ app('dom.Project', () => {
 
                     return [
                       <tr>
-                        <th><small>{resource.name}</small></th>
+                        <th className="bg-warning"><small>{resource.name}</small></th>
                         {(() => {
                           return months(1,18).map((m) => {
                             return <td className="bg-warning"></td>;
