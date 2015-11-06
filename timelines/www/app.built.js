@@ -96,19 +96,26 @@ app('data.describeProjects', function () {
 
   var project = _app.project;
   var founder = _app.founder;
+  var founders = _app.founders;
   var developer = _app.developer;
   var designer = _app.designer;
   var developers = _app.developers;
   var designers = _app.designers;
 
+  founders('kapil', 'vivek');
+  developers(1, 2, 3, 4, 5, 6);
+  designers(1, 2, 3, 4, 5, 6);
+
   return function () {
-    project('Forms App', 'forms-app', 3).addResource(founder('kapil'), months(1), 'dev-api').addResource(founder('kapil'), months(2), 'dev-ui').addResource(founder('vivek'), months(1, 2), 'design-product').addResource(founder('kapil'), months(1, 2), 'manage-product').addResource(founder('vivek'), months(2, 6), 'manage-product').addResource(designer(1), months(1, 2), 'design-product').addResource(developer(1), months(1, 2), 'dev-api').addResource(developer(2), months(1, 2), 'dev-ui').addResource(developers(1, 2), months(3), 'dev-product').addResource(developers(1, 2), months(3), 'support-product').addResource(designer(1), months(3), 'support-product').addResource(developers(3, 4), months(4, 6), 'support-product').addResource(designer(2), months(4, 6), 'support-product');
+    project('Forms App', 'forms-app', 3).addResource(founder('kapil'), months(1), 'dev-api').addResource(founder('kapil'), months(2), 'dev-ui').addResource(founder('vivek'), months(1, 2), 'design-product').addResource(founder('kapil'), months(1, 2), 'manage-product').addResource(founder('vivek'), months(2, 6), 'manage-product').addResource(developer(1), months(1, 2), 'dev-api').addResource(developer(2), months(1, 2), 'dev-ui').addResource(developers(1, 2), months(3, 4), 'dev-product').addResource(developers(1, 2), months(3, 4), 'support-product').addResource(developers(3, 4), months(4, 6), 'support-product').addResource(designer(1), months(1, 2), 'design-product').addResource(designer(1), months(3, 6), 'support-product');
 
-    project('App Builder Platform', 'app-builder-platform', 9).addResource(founder('kapil'), months(3), 'dev-api').addResource(founder('kapil'), months(1, 12), 'manage-product').addResource(founder('vivek'), months(1, 6), 'design-ui').addResource(designer(2), months(1, 6), 'design-ui').addResource(designer(1), months(3, 6), 'design-ui').addResource(designer(3), months(3, 8), 'design-ui').addResource(founder('kapil'), months(4, 5), 'dev-ui').addResource(developers(1, 2), months(4, 6), 'dev-api').addResource(developers(1, 2), months(4, 6), 'dev-ui').addResource(developers(3, 4), months(6, 8), 'dev-api').addResource(developers(3, 4), months(6, 8), 'dev-ui').addResource(developers(1, 2), months(4, 6), 'dev-product').addResource(founder('kapil'), months(6, 8), 'dev-product').addResource(developers(1, 2, 3, 4), months(9, 12), 'support-product').addResource(designers(1, 2, 3), months(9, 12), 'support-product');
+    project('App Builder Platform', 'app-builder-platform', 9).addResource(founder('kapil'), months(3, 4), 'dev-api').addResource(founder('kapil'), months(1, 18), 'manage-product').addResource(founder('vivek'), months(1, 8), 'design-ui').addResource(designer(1), months(3, 6), 'design-ui').addResource(designer(2), months(1, 8), 'design-ui').addResource(designer(3), months(4, 8), 'design-ui').addResource(founder('kapil'), months(5, 6), 'dev-ui').addResource(developers(3, 4), months(6, 8), 'dev-product').addResource(developers(1, 2), months(4, 8), 'dev-product').addResource(founder('kapil'), months(6, 8), 'dev-product').addResource(developers(1, 4), months(8, 18), 'support-product').addResource(designers(2, 3), months(8, 18), 'support-product').addResource(developers(5, 6), months(13, 18), 'support-product').addResource(designers(5, 6), months(13, 18), 'support-product');
 
-    project('App Builder Themes', 'app-builder-themes', 12).addResource(founder('vivek'), months(1, 15), 'manage-product').addResource(founder('vivek'), months(5, 8), 'design-ui').addResource(designer(1, 2), months(5, 8), 'design-ui').addResource(designer(3, 12), months(9, 12), 'design-ui').addResource(designer(4), months(10, 12), 'design-ui').addResource(developer(1, 2, 3, 4), months(9, 12), 'dev-product');
+    project('App Builder Themes/Widgets', 'app-builder-themes', 15).addResource(founder('vivek'), months(1, 18), 'manage-product').addResource(founder('vivek'), months(5, 15), 'design-ui').addResource(developers(1, 2, 3, 4), months(9, 12), 'dev-product').addResource(developers(2, 4), months(12, 15), 'dev-product').addResource(designers(1, 2), months(5, 9), 'design-ui').addResource(designers(3, 4), months(9, 16), 'design-ui').addResource(designers(1, 2, 3, 4).concat(developers(2, 3)), months(12, 18), 'support-product').addResource(developers(2, 4), months(15, 18), 'support-product').addResource(developers(5, 6), months(13, 18), 'support-product').addResource(designers(5, 6), months(13, 18), 'support-product');
 
-    project('App Builder Docs', 'app-builder-docs', 12).addResource(founder('kapil'), months(1, 15), 'manage-product').addResource(founder('kapil'), months(9, 12), 'dev-product').addResource(designer(4), months(9, 10), 'design-ui');
+    project('App Builder Docs', 'app-builder-docs', 12).addResource(founder('kapil'), months(1, 18), 'manage-product').addResource(founder('kapil'), months(10, 12), 'dev-product').addResource(designer(4), months(9, 10), 'design-ui').addResource(founder('vivek'), months(9, 12), 'support-product').addResource(developers(1, 2, 3, 4), months(9, 12), 'support-product').addResource(designers(1, 2, 3, 4), months(9, 12), 'support-product');
+
+    project('Themes/Widgets Marketplace', 'themes-widgets-marketplace', 16).addResource(founders('kapil', 'vivek'), months(8, 18), 'manage-product').addResource(designers(1, 2), months(9, 13), 'design-ui').addResource(developers(1, 3), months(13, 15), 'dev-product').addResource(developers(1, 3), months(15, 18), 'support-product').addResource(designers(1, 2), months(13, 18), 'support-product').addResource(developers(5, 6), months(13, 18), 'support-product').addResource(designers(5, 6), months(13, 18), 'support-product');
   };
 });
 'use strict';
@@ -280,6 +287,16 @@ app('data.store', function () {
     return resource('founder', id);
   }
 
+  function founders() {
+    for (var _len = arguments.length, ids = Array(_len), _key = 0; _key < _len; _key++) {
+      ids[_key] = arguments[_key];
+    }
+
+    return ids.map(function (id) {
+      return founder(id);
+    });
+  }
+
   function developer(id) {
     return resource('developer', id);
   }
@@ -289,8 +306,8 @@ app('data.store', function () {
   }
 
   function developers() {
-    for (var _len = arguments.length, ids = Array(_len), _key = 0; _key < _len; _key++) {
-      ids[_key] = arguments[_key];
+    for (var _len2 = arguments.length, ids = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      ids[_key2] = arguments[_key2];
     }
 
     return ids.map(function (id) {
@@ -299,8 +316,8 @@ app('data.store', function () {
   }
 
   function designers() {
-    for (var _len2 = arguments.length, ids = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      ids[_key2] = arguments[_key2];
+    for (var _len3 = arguments.length, ids = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      ids[_key3] = arguments[_key3];
     }
 
     return ids.map(function (id) {
@@ -314,6 +331,7 @@ app('data.store', function () {
     project: project,
     resource: resource,
     founder: founder,
+    founders: founders,
     developer: developer,
     designer: designer,
     developers: developers,

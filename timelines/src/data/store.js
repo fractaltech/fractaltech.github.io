@@ -35,6 +35,10 @@ app('data.store', () => {
     return resource('founder', id);
   }
 
+  function founders(...ids) {
+    return ids.map((id) => founder(id));
+  }
+
   function developer(id) {
     return resource('developer', id);
   }
@@ -57,6 +61,7 @@ app('data.store', () => {
     project,
     resource,
     founder,
+    founders,
     developer,
     designer,
     developers,
