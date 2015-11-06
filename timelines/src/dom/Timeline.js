@@ -17,11 +17,6 @@ app('dom.Timeline', () => {
               <thead>
                 <tr>
                   <th><small>Resource/Role</small></th>
-                  {(() => {
-                    return months(1,18).map((i) => {
-                      return <th><small><small>Month {i}</small></small></th>
-                    });
-                  })()}
                 </tr>
               </thead>
 
@@ -33,7 +28,7 @@ app('dom.Timeline', () => {
                         <th className="bg-warning"><small>{resource.name}</small></th>
                         {(() => {
                           return months(1,18).map((m) => {
-                            return <td className="bg-warning"></td>;
+                            return <td className="bg-warning"><small><small>Month {m}</small></small></td>;
                           });
                         })()}
                       </tr>

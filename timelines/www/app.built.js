@@ -656,25 +656,7 @@ app('dom.Timeline', function () {
                       null,
                       'Resource/Role'
                     )
-                  ),
-                  (function () {
-                    return months(1, 18).map(function (i) {
-                      return React.createElement(
-                        'th',
-                        null,
-                        React.createElement(
-                          'small',
-                          null,
-                          React.createElement(
-                            'small',
-                            null,
-                            'Month ',
-                            i
-                          )
-                        )
-                      );
-                    });
-                  })()
+                  )
                 )
               ),
               React.createElement(
@@ -696,7 +678,20 @@ app('dom.Timeline', function () {
                       ),
                       (function () {
                         return months(1, 18).map(function (m) {
-                          return React.createElement('td', { className: 'bg-warning' });
+                          return React.createElement(
+                            'td',
+                            { className: 'bg-warning' },
+                            React.createElement(
+                              'small',
+                              null,
+                              React.createElement(
+                                'small',
+                                null,
+                                'Month ',
+                                m
+                              )
+                            )
+                          );
                         });
                       })()
                     )].concat(Array.from(resource.projects).map(function (project) {
@@ -780,259 +775,5 @@ app('util.range', function () {
 
     return range;
   };
-});
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.timelines.All', function () {
-  var All = (function (_React$Component) {
-    _inherits(All, _React$Component);
-
-    function All(props) {
-      _classCallCheck(this, All);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(All).call(this, props));
-    }
-
-    _createClass(All, [{
-      key: "render",
-      value: function render() {
-        return React.createElement(
-          "div",
-          { className: "row" },
-          React.createElement(
-            "div",
-            { className: "col-md-12" },
-            React.createElement(
-              "h2",
-              null,
-              "All Timelines"
-            )
-          )
-        );
-      }
-    }]);
-
-    return All;
-  })(React.Component);
-
-  return All;
-});
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.timelines.AppBuilderPaaS', function () {
-  var AppBuilderPaaS = (function (_React$Component) {
-    _inherits(AppBuilderPaaS, _React$Component);
-
-    function AppBuilderPaaS(props) {
-      _classCallCheck(this, AppBuilderPaaS);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(AppBuilderPaaS).call(this, props));
-    }
-
-    _createClass(AppBuilderPaaS, [{
-      key: "render",
-      value: function render() {
-        return React.createElement(
-          "div",
-          { className: "row" },
-          React.createElement(
-            "div",
-            { className: "col-md-12" },
-            React.createElement(
-              "h2",
-              null,
-              "App Builder PaaS Timelines"
-            )
-          )
-        );
-      }
-    }]);
-
-    return AppBuilderPaaS;
-  })(React.Component);
-
-  return AppBuilderPaaS;
-});
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.timelines.AppBuilderPlatform', function () {
-  var AppBuilderPlatform = (function (_React$Component) {
-    _inherits(AppBuilderPlatform, _React$Component);
-
-    function AppBuilderPlatform(props) {
-      _classCallCheck(this, AppBuilderPlatform);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(AppBuilderPlatform).call(this, props));
-    }
-
-    _createClass(AppBuilderPlatform, [{
-      key: "render",
-      value: function render() {
-        return React.createElement(
-          "div",
-          { className: "row" },
-          React.createElement(
-            "div",
-            { className: "col-md-12" },
-            React.createElement(
-              "h2",
-              null,
-              "App Builder Platform Timelines"
-            )
-          )
-        );
-      }
-    }]);
-
-    return AppBuilderPlatform;
-  })(React.Component);
-
-  return AppBuilderPlatform;
-});
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-app('dom.timelines.FormApp', function () {
-  var team = app('data.team');
-  var range = app('util.range');
-
-  var FormApp = (function (_React$Component) {
-    _inherits(FormApp, _React$Component);
-
-    function FormApp(props) {
-      _classCallCheck(this, FormApp);
-
-      return _possibleConstructorReturn(this, Object.getPrototypeOf(FormApp).call(this, props));
-    }
-
-    _createClass(FormApp, [{
-      key: 'render',
-      value: function render() {
-        return React.createElement(
-          'div',
-          { className: 'row' },
-          React.createElement(
-            'div',
-            { className: 'col-md-12' },
-            React.createElement(
-              'table',
-              { className: 'table table-bordered' },
-              React.createElement(
-                'thead',
-                null,
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'th',
-                    null,
-                    'Resource'
-                  ),
-                  (function () {
-                    return range(1, 19).map(function (i) {
-                      return React.createElement(
-                        'th',
-                        null,
-                        React.createElement(
-                          'small',
-                          null,
-                          'Month ',
-                          i
-                        )
-                      );
-                    });
-                  })()
-                )
-              ),
-              React.createElement(
-                'tbody',
-                null,
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'td',
-                    null,
-                    team.founder('kapil').name
-                  )
-                ),
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'td',
-                    null,
-                    team.founder('vivek').name
-                  )
-                ),
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'td',
-                    null,
-                    team.developer(1).name
-                  )
-                ),
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'td',
-                    null,
-                    team.developer(2).name
-                  )
-                ),
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'td',
-                    null,
-                    team.designer(1).name
-                  )
-                )
-              )
-            )
-          )
-        );
-      }
-    }]);
-
-    return FormApp;
-  })(React.Component);
-
-  return FormApp;
 });
 //# sourceMappingURL=app.built.js.map
