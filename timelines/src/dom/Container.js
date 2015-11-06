@@ -2,7 +2,8 @@ app('dom.Container', () => {
 
   const {projects,project} = app('data.store');
   const Project = app('dom.Project');
-  const Timeline = app('dom.Timeline');
+  const ResourcesTimeline = app('dom.ResourcesTimeline');
+  const ProjectsTimeline = app('dom.ProjectsTimeline');
 
   class Container extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ app('dom.Container', () => {
 
     _initTabs() {
       this.state.tabs = [
-        {slug: 'all', name: 'All Timelines'}
+        {slug: 'all-resources', name: 'All Resources Timelines'},
+        {slug: 'all-projects', name: 'All Projects Timelines'}
       ].concat(Array.from(projects).map((p) => { return {slug: p.slug, name: p.name}; }));
 
       this.state.activeTab = this.state.tabs[0];
@@ -52,7 +54,8 @@ app('dom.Container', () => {
 
               {(() => {
                 switch (this.state.activeTab.slug) {
-                  case 'all': return <Timeline />
+                  case 'all-resources': return <ResourcesTimeline />
+                  case 'all-projects': return <ProjectsTimeline />
                   default   : return <Project project={project(this.state.activeTab.slug)} />
                 }
               })()}

@@ -396,7 +396,8 @@ app('dom.Container', function () {
   var project = _app.project;
 
   var Project = app('dom.Project');
-  var Timeline = app('dom.Timeline');
+  var ResourcesTimeline = app('dom.ResourcesTimeline');
+  var ProjectsTimeline = app('dom.ProjectsTimeline');
 
   var Container = (function (_React$Component) {
     _inherits(Container, _React$Component);
@@ -415,7 +416,7 @@ app('dom.Container', function () {
     _createClass(Container, [{
       key: '_initTabs',
       value: function _initTabs() {
-        this.state.tabs = [{ slug: 'all', name: 'All Timelines' }].concat(Array.from(projects).map(function (p) {
+        this.state.tabs = [{ slug: 'all-resources', name: 'All Resources Timelines' }, { slug: 'all-projects', name: 'All Projects Timelines' }].concat(Array.from(projects).map(function (p) {
           return { slug: p.slug, name: p.name };
         }));
 
@@ -470,8 +471,10 @@ app('dom.Container', function () {
               ),
               (function () {
                 switch (_this2.state.activeTab.slug) {
-                  case 'all':
-                    return React.createElement(Timeline, null);
+                  case 'all-resources':
+                    return React.createElement(ResourcesTimeline, null);
+                  case 'all-projects':
+                    return React.createElement(ProjectsTimeline, null);
                   default:
                     return React.createElement(Project, { project: project(_this2.state.activeTab.slug) });
                 }
@@ -631,7 +634,160 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-app('dom.Timeline', function () {
+app('dom.ProjectsTimeline', function () {
+  var _app = app('data.store');
+
+  var projects = _app.projects;
+  var resources = _app.resources;
+
+  var months = app('util.months');
+
+  var Timeline = (function (_React$Component) {
+    _inherits(Timeline, _React$Component);
+
+    function Timeline(props) {
+      _classCallCheck(this, Timeline);
+
+      return _possibleConstructorReturn(this, Object.getPrototypeOf(Timeline).call(this, props));
+    }
+
+    _createClass(Timeline, [{
+      key: 'render',
+      value: function render() {
+        return React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(
+            'div',
+            { className: 'col-md-12' },
+            React.createElement(
+              'table',
+              { className: 'table table-bordered' },
+              React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                  'tr',
+                  null,
+                  React.createElement(
+                    'th',
+                    null,
+                    React.createElement(
+                      'small',
+                      null,
+                      'Resource/Role'
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                'tbody',
+                null,
+                (function () {
+                  return Array.from(projects).map(function (project) {
+                    return [React.createElement(
+                      'tr',
+                      null,
+                      React.createElement(
+                        'th',
+                        { className: 'bg-warning' },
+                        React.createElement(
+                          'small',
+                          null,
+                          project.name
+                        )
+                      ),
+                      (function () {
+                        return months(1, 18).map(function (m) {
+                          return React.createElement(
+                            'td',
+                            { className: 'bg-warning' },
+                            React.createElement(
+                              'small',
+                              null,
+                              React.createElement(
+                                'small',
+                                null,
+                                'Month ',
+                                m
+                              )
+                            )
+                          );
+                        });
+                      })()
+                    )].concat(Array.from(project.resources).map(function (resource) {
+                      var responsibilities = resource.responsibilitiesFor(project);
+
+                      return React.createElement(
+                        'tr',
+                        null,
+                        React.createElement(
+                          'td',
+                          null,
+                          React.createElement(
+                            'small',
+                            null,
+                            React.createElement(
+                              'small',
+                              null,
+                              resource.name
+                            )
+                          )
+                        ),
+                        months(1, 18).map(function (m) {
+                          var involvements = responsibilities.filter(function (r) {
+                            return r.coversMonth(m);
+                          }).map(function (r) {
+                            return r.involvement;
+                          });
+
+                          var className = involvements.length > 0 ? 'bg-success' : '';
+
+                          return React.createElement(
+                            'td',
+                            { className: className },
+                            React.createElement(
+                              'small',
+                              null,
+                              React.createElement(
+                                'small',
+                                null,
+                                React.createElement(
+                                  'span',
+                                  { style: { display: 'inline-block' } },
+                                  involvements.join(',')
+                                )
+                              )
+                            )
+                          );
+                        })
+                      );
+                    }));
+                  });
+                })()
+              )
+            )
+          )
+        );
+      }
+    }]);
+
+    return Timeline;
+  })(React.Component);
+
+  return Timeline;
+});
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+app('dom.ResourcesTimeline', function () {
   var _app = app('data.store');
 
   var projects = _app.projects;

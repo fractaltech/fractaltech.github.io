@@ -1,4 +1,4 @@
-app('dom.Timeline', () => {
+app('dom.ResourcesTimeline', () => {
 
   const {projects, resources} = app('data.store');
   const months = app('util.months');
