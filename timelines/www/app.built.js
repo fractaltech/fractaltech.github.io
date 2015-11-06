@@ -716,9 +716,9 @@ app('dom.Timeline', function () {
                                 React.createElement(
                                   'strong',
                                   null,
-                                  project.name
+                                  project.name,
+                                  ': '
                                 ),
-                                '-',
                                 responsibility.involvement
                               )
                             )
@@ -735,7 +735,6 @@ app('dom.Timeline', function () {
                         );
                       });
                     }).reduce(function (nodes, childNodes) {
-                      console.log(childNodes);
                       return nodes.concat(childNodes);
                     }, []));
                   });

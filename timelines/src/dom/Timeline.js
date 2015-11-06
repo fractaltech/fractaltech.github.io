@@ -42,7 +42,7 @@ app('dom.Timeline', () => {
                         return (
                           <tr>
                             <td><small><small>
-                              <strong>{project.name}</strong>-{responsibility.involvement}
+                              <strong>{project.name}: </strong>{responsibility.involvement}
                             </small></small></td>
 
                             {(() => {
@@ -58,7 +58,6 @@ app('dom.Timeline', () => {
                         );
                       });
                     }).reduce((nodes, childNodes) => {
-                      console.log(childNodes);
                       return nodes.concat(childNodes);
                     }, []))
                   });
