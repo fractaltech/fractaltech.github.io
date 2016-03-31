@@ -282,7 +282,12 @@
       <iframe name="hidden_iframe"
         id="hidden_iframe"
         style="display:none;"
-        onload="if(submitted){window.location='http://www.fractaltech.in/formapp/#contact';}">
+        onload="if(submitted){modal.style.display = 'block';}">
+<!--        onload="if(submitted){window.location='http://www.fractaltech.in/formapp/#contact';}">-->
+<!--        onload="if(submitted){newwindow=window.open('http://www.google.com','name','height=200,width=150');
+                if (window.focus) {newwindow.focus()}
+	              return false;}">-->
+
       </iframe>
 			<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="https://docs.google.com/forms/d/1EPEkYuey0dMxTdj6H83tMCI4ObLoleWkeW_-GEq4KO4/formResponse?embedded=true" target="hidden_iframe"
             onsubmit="submitted=true;">
@@ -311,6 +316,16 @@
 			</form>
 		</div>
 	</div><!--/contact-->
+
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">x</span>
+      <p>Sucessfully submitted</p>
+    </div>
+
+  </div>
 
 
 	<footer id="footer">
