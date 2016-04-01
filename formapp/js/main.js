@@ -127,6 +127,15 @@ jQuery(function ($) {
 		$('.video-link').magnificPopup({type:'iframe'});
 	}());
 
+  /*==============================================================*/
+    // Form Submit
+    /*==============================================================*/
+  (function () {
+		$('#ss-submit').on('click', function(){
+      this.value = 'sending...';
+      this.submit();
+		});
+	}());
 
 
 });
